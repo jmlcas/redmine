@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+
+  redmine:
+    image: redmine:latest
+    restart: unless-stopped
+    volumes:
+      - ./redmine-data:/usr/src/redmine/files
+    ports:
+      - "8200:3000"
+    environment:
+      - REDMINE_DB_MYSQL=db
+      - REDMINE_DB_PASSWORD=example
+      - REDMINE_SECRET_KEY_BASE=supersecretkey
+    depends_on:
+      - db      
+
+  db:
+    image: mariadb:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_DATABASE=redmine   
+
+
+
+
