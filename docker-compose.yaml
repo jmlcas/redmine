@@ -19,10 +19,11 @@ services:
   db:
     image: mariadb:latest
     restart: unless-stopped
+    volumes:
+      - ./db:/var/lib/mysql  
     environment:
       - MYSQL_ROOT_PASSWORD=example
       - MYSQL_DATABASE=redmine   
-
-
+      
 
 
