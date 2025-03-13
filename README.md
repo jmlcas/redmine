@@ -1,6 +1,7 @@
-# redmine
-Redmine - docker-compose
+# Redmine
 
-Ver en "localhost:8200"
+Ver en "https://localhost:8200"
+
 Usuario: admin
+
 Password: admin
