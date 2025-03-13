@@ -1,9 +1,8 @@
-version: '3.1'
-
 services:
 
   redmine:
     image: redmine:latest
+    container_name: redmine
     restart: unless-stopped
     volumes:
       - ./redmine-data:/usr/src/redmine/files
@@ -14,16 +13,14 @@ services:
       - REDMINE_DB_PASSWORD=example
       - REDMINE_SECRET_KEY_BASE=supersecretkey
     depends_on:
-      - db      
+      - db
 
   db:
     image: mariadb:latest
+    container_name: redmine-db
     restart: unless-stopped
     volumes:
-      - ./db:/var/lib/mysql  
+      - ./db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=example
-      - MYSQL_DATABASE=redmine   
-      
-
-
+      - MYSQL_DATABASE=redmine
